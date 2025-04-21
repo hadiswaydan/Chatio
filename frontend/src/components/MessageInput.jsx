@@ -6,6 +6,7 @@ export default function MessageInput({ handleSend }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(input.trim());
     const trimmed = input.trim();
     if (trimmed) {
       handleSend(trimmed);

@@ -1,18 +1,48 @@
 import { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import ChatMessage from "../components/ChatMessage";
 import MessageInput from "../components/MessageInput";
+import {
+  connectWebSocket,
+  disconnectWebSocket,
+  sendMessage,
+} from "../services/websocket";
 
-export default function ChatRoom({ username }) {
-  const [messages, setMessages] = useState([
-    { sender: "System", text: "Welcome to the chat!" },
-    { sender: "Alice", text: "Hey everyone 👋" },
-  ]);
+export default function ChatRoom({}) {
+  const [messages, setMessages] = useState([]);
+  const [username, setUsername] = useState("");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    connectWebSocket((newMsg) => {
+      setMessages((prev) => [...prev, newMsg]);
+    });
+
+    return () => {
+      disconnectWebSocket();
+    };
+  }, []);
+
+  useEffect(() => {
+    const storedUsername = localStorage.getItem("username");
+    if (storedUsername) {
+      setUsername(storedUsername);
+    } else {
+      navigate("/");
+    }
+  }, []);
+
+  const handleSend = (text) => {
+    if (text.trim() !== "") {
+      sendMessage({
+        sender: username,
+        content: text,
+        timestamp: new Date(),
+      });
+    }
+  };
 
   const bottomRef = useRef(null);
-
-  const handleSend = (message) => {
-    setMessages((prev) => [...prev, { sender: username, text: message }]);
-  };
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });

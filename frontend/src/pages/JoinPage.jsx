@@ -1,39 +1,47 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { login } from "../services/auth";
 
-export default function JoinPage({ onJoin }) {
-  const [name, setName] = useState("");
+const JoinPage = () => {
+  const [username, setUsername] = useState("");
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    const trimmedName = name.trim();
-    if (trimmedName) {
-      onJoin(trimmedName);
+    setError("");
+
+    try {
+      await login(username);
+      localStorage.setItem("username", username);
+      navigate("/chat");
+    } catch (err) {
+      setError(err.message);
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-100 to-purple-200">
+    <div className="h-screen flex items-center justify-center bg-gray-100">
       <form
-        onSubmit={handleSubmit}
-        className="bg-white p-8 rounded-2xl shadow-lg w-full max-w-sm space-y-5"
+        onSubmit={handleLogin}
+        className="bg-white p-6 rounded shadow-md w-full max-w-sm"
       >
-        <h1 className="text-3xl font-bold text-center text-gray-800">
-          Join the Chat
-        </h1>
+        <h2 className="text-xl font-bold mb-4">Join the Chat</h2>
         <input
           type="text"
-          placeholder="Enter your username"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+          className="w-full p-2 border rounded mb-2"
+          placeholder="Enter a username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          required
         />
-        <button
-          type="submit"
-          className="w-full bg-blue-500 text-white font-semibold py-2 rounded hover:bg-blue-600 transition"
-        >
-          Join Chat
+        {error && <p className="text-red-500 text-sm mb-2">{error}</p>}
+        <button className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600">
+          Join
         </button>
       </form>
     </div>
   );
-}
+};
+
+export default JoinPage;
