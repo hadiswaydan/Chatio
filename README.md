@@ -8,6 +8,11 @@ Chatio is a modern chat application designed to provide real-time communication.
 - **Message editing**: Edit a message that has already been sent.
 - **Cross-Platform Support**: Accessible on desktop and mobile devices.
 
+## Built With
+- React — Frontend framework
+- Spring Boot — Backend server
+- WebSockets — Real-time messaging protocol
+
 ## Installation
 
 1. Clone the repository:
