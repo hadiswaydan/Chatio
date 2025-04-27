@@ -70,8 +70,6 @@ export default function ChatRoom() {
         <h1 className="relative  -translate-x-1/2 text-2xl font-semibold tracking-wide text-gray-700 animate-fade-in">
           Chat Room
         </h1>
-
-        {/* Logout on the right */}
         <button
           onClick={handleLogout}
           className="p-2 bg-slate-400 hover:bg-slate-500 text-white rounded-full shadow-md transition"

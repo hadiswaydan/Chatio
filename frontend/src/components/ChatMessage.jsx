@@ -61,8 +61,6 @@ function ChatMessage({ message, isSelf, onEdit }) {
           )}
         </div>
       )}
-
-      {/* Timestamp */}
       {message.timestamp && (
         <div className="text-xs text-gray-500 mt-1 text-right">
           {formattedTime}
