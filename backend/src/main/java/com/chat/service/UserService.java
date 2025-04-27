@@ -14,7 +14,7 @@ public class UserService {
     }
 
     public boolean registerUsername(String username) {
-        return activeUsers.add(username); // returns false if it was already there
+        return activeUsers.add(username);
     }
 
     public void removeUsername(String username) {

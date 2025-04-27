@@ -18,6 +18,7 @@ public class AuthController {
 
     @GetMapping("/login")
     public ResponseEntity<?> login(@RequestParam String username) {
+        username = username.trim().toLowerCase();
         if (userService.isUsernameTaken(username)) {
             return ResponseEntity.badRequest().body(Collections.singletonMap("message", "Username already taken"));
         }
@@ -28,6 +29,7 @@ public class AuthController {
 
     @GetMapping("/logout")
     public ResponseEntity<?> logout(@RequestParam String username) {
+        username = username.trim().toLowerCase();
         userService.removeUsername(username);
         return ResponseEntity.ok(Collections.singletonMap("message", "logout successful"));
     }

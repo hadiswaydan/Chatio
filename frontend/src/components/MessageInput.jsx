@@ -6,7 +6,6 @@ export default function MessageInput({ handleSend }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(input.trim());
     const trimmed = input.trim();
     if (trimmed) {
       handleSend(trimmed);
@@ -15,17 +14,20 @@ export default function MessageInput({ handleSend }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex p-4 border-t bg-white">
+    <form
+      onSubmit={handleSubmit}
+      className="flex items-center gap-2 p-2 bg-white shadow-md rounded-t-lg"
+    >
       <input
         type="text"
         placeholder="Type a message..."
         value={input}
         onChange={(e) => setInput(e.target.value)}
-        className="flex-1 p-2 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+        className="flex-1 px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-transparent text-gray-700 placeholder-gray-400 transition"
       />
       <button
         type="submit"
-        className="bg-blue-500 text-white px-4 py-2 rounded-r-md hover:bg-blue-600 transition"
+        className="px-5 py-3 bg-teal-500 hover:bg-teal-600 text-white rounded-lg font-medium transition-all duration-300"
       >
         Send
       </button>
