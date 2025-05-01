@@ -2,6 +2,10 @@
 
 Chatio is a modern chat application designed to provide real-time communication. It offers a user-friendly interface and the ability to send or edit messages and receive them in real time.
 
+## 🌐 Live Demo
+
+👉 [Try Chatio here](https://chatio-blush.vercel.app/)
+
 ## Features
 
 - **Real-time Messaging**: Instant communication with other users.
