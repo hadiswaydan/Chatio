@@ -11,7 +11,7 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         registry.addEndpoint("/ws")
-                .setAllowedOrigins("http://chatio-blush.vercel.app");
+                .setAllowedOrigins("https://chatio-blush.vercel.app");
     }
 
     @Override
