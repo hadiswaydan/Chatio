@@ -13,28 +13,9 @@ Chatio is a modern chat application designed to provide real-time communication.
 - **Cross-Platform Support**: Accessible on desktop and mobile devices.
 
 ## Built With
-- React — Frontend framework
+- React Js — Frontend framework
 - Spring Boot — Backend server
 - WebSockets — Real-time messaging protocol
-
-## Installation
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/Chatio.git
-   ```
-2. Navigate to the project directory:
-   ```bash
-   cd Chatio
-   ```
-3. Install dependencies:
-   ```bash
-   npm install
-   ```
-4. Start the application:
-   ```bash
-   npm start
-   ```
 
 ## Usage
 
